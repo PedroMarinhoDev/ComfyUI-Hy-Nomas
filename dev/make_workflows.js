@@ -246,13 +246,14 @@ scaled to cover width x height and center-cropped. Decode keeps one frame of the
 
 The **Drive** node takes the same encoder and image (start_image) to steer a world that starts from your picture.`),
   [-700, 0], [640, 640])
-  const paris = await (await fetch('/api/view?filename=paris_walk.json&type=input')).text()
+  const paris = await (await fetch('/api/view?filename=paris_from_image.json&type=input')).text()
   const dit5 = add('HyNomasLoadDiT', [0, 0], { dit_name: DIT, matmul: 'int8' })
   const clip5 = add('CLIPLoader', [0, 160], { clip_name: TE, type: 'qwen_image' })
   const enc5 = add('HyNomasLoadEncoder', [0, 330], { encoder_name: DEC })
   const prompt5 = add('HyNomasWorldPrompt', [0, 450], { world_json: paris })
   prompt5.size = [420, 520]
   const img5 = add('LoadImage', [520, 0], {})
+  img5.setSize([400, 470])                 // room for the picture's preview, so Start From Image sits below it
   const start5 = add('HyNomasStartFromImage', [520, 400], { width: W, height: H, still_frames: 3, seed: 0 })
   link(dit5, 0, start5, 'model'); link(clip5, 0, start5, 'clip'); link(enc5, 0, start5, 'encoder')
   link(prompt5, 0, start5, 'script'); link(img5, 0, start5, 'image')

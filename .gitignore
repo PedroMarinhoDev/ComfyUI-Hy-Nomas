@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+dev/promo/build/
+dev/promo/out/

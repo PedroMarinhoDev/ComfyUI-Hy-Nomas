@@ -1,0 +1,72 @@
+{
+  "perspective_view": "third-person observer",
+  "Style": "video game",
+  "subject_list": [
+    {
+      "subject_id": "<|Subject1|>",
+      "display_name": "woman in a dark leather jacket",
+      "subject_attribute": "An adult woman with brown hair tied back in a ponytail, wearing a worn dark leather jacket, a black canvas backpack, a belt with a pouch and a thigh holster, dark cargo trousers and black lace-up boots, standing on a cobblestone street. The camera films the woman in a dark leather jacket from an external position, and the woman in a dark leather jacket is visible in the video. The framing of the video from the camera is independent of the woman in a dark leather jacket, and does not follow the movement of the woman in a dark leather jacket."
+    }
+  ],
+  "segments": [
+    {
+      "start_time": "00:00.000",
+      "end_time": "00:01.000",
+      "visual_description_long": "A wet cobblestone street in Paris slopes gently down toward a riverside road along the Seine, with the Eiffel Tower rising in the soft haze straight ahead under a cloudy sky lit from behind by a pale sun. On the left, a crumbling stone wall gives way to the river, an arched stone bridge and a row of cream-colored buildings with gray mansard roofs and domed towers behind autumn trees with orange leaves. On the right, tall Haussmann buildings with wrought-iron balconies line the street, and small vintage cars and a few modern cars are parked along the curb. Black iron street lamps stand along the river wall, and a few distant pedestrians walk toward the bridge. The light is soft and diffuse, with a cool, slightly misty atmosphere and glistening reflections on the cobblestones.",
+      "description_change": null,
+      "contained_actions": []
+    },
+    {
+      "start_time": "00:01.000",
+      "end_time": "00:06.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the street is seen from a new angle as the viewpoint moves around, with the wet cobblestones, the parked cars and the Haussmann facades shifting across the frame.",
+      "contained_actions": [
+        {
+          "start_time": "00:01.000",
+          "end_time": "00:06.000",
+          "action_description": "<Action1><|Subject1|> stands still on the cobblestones, looking around the street</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:06.000",
+      "end_time": "00:11.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the street is now seen from the side, with the river wall, the Seine and the arched stone bridge in the background under the cloudy sky.",
+      "contained_actions": [
+        {
+          "start_time": "00:06.000",
+          "end_time": "00:11.000",
+          "action_description": "<Action1><|Subject1|> stands still on the cobblestones, looking around the street</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:11.000",
+      "end_time": "00:16.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the view now looks back up the sloping cobblestone street, toward the old stone wall, the autumn trees and the cream-colored buildings, with the Eiffel Tower out of view behind the camera.",
+      "contained_actions": [
+        {
+          "start_time": "00:11.000",
+          "end_time": "00:16.000",
+          "action_description": "<Action1><|Subject1|> stands still on the cobblestones, looking around the street</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:16.000",
+      "end_time": "00:21.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the visible scene, background, and other-object layout remain unchanged.",
+      "contained_actions": [
+        {
+          "start_time": "00:16.000",
+          "end_time": "00:21.000",
+          "action_description": "<Action1><|Subject1|> starts walking toward the camera down the cobblestone street with a steady stride</Action1>."
+        }
+      ]
+    }
+  ]
+}

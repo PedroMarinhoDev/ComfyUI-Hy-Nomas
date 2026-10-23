@@ -9,6 +9,7 @@
 
 <p align="center">
   <a href="https://huggingface.co/PedroMarinhoDev/Hy-Nomas-ComfyUI"><b>Model files on Hugging Face</b></a> ·
+  <a href="https://huggingface.co/PedroMarinhoDev/Hy-Nomas-ComfyUI/resolve/main/hy-nomas-promo.mp4"><b>Watch the overview (68 s)</b></a> ·
   <a href="#samples"><b>Samples</b></a> ·
   <a href="#quick-start"><b>Quick start</b></a> ·
   <a href="workflows"><b>Workflows</b></a> ·
@@ -41,6 +42,13 @@ segment for the first two. RTX 4090, about 3 minutes each. Click a preview for t
 
 <sub>Every 2 s of each sample; the first frame of the top two rows is the start image. Their worlds:
 [`examples/`](examples) (`paris_from_image.json`, `beach_from_image.json`, `fox.json`).</sub>
+
+**Camera control and drive mode**, both starting from the same Paris picture:
+
+| Camera keys: an orbit | Drive mode |
+|:--:|:--:|
+| [![Orbit](assets/orbit.webp)](https://huggingface.co/PedroMarinhoDev/Hy-Nomas-ComfyUI/resolve/main/samples/paris_orbit_camera_keys_720p.mp4) | [![Drive](assets/drive.webp)](https://huggingface.co/PedroMarinhoDev/Hy-Nomas-ComfyUI/resolve/main/samples/drive_from_image_832x480.mp4) |
+| 20 s at 1280x704. Camera Keys `D+Left 3` on three segments (strafe right while turning left: the camera circles her while she stands still), then `S 4` as she walks toward it. World: [`examples/paris_orbit_from_image.json`](examples/paris_orbit_from_image.json). | Six 1 s turns at 832x480 steered with W, W+Left, W, W+Right, W, W in the Drive node; each turn took about 4.3 s on the RTX 4090. |
 
 ## What you get
 
@@ -193,6 +201,10 @@ Written this way, they are followed:
   in each segment. Actions with their own times split a segment: each action's frames see only that action's text
   (plus the segment's description). Actions must not overlap.
 * Segment lengths come from the times (24 fps, 4 video frames per latent frame). 2-5 s works well.
+* For camera moves, connect **Camera Keys** or **Camera Recording** to the Segment: they steer far more reliably
+  than a `<Camera1>` sentence. In the same orbit, keys circled the subject while the written camera barely moved.
+  In camera-controlled segments, Tencent's format describes only what the scene looks like from the new
+  viewpoint, with no camera sentence.
 * Actions, camera moves and local changes (flowers opening, the light turning golden) happen within a segment. A
   sudden change of the whole scene does not: a "heavy snowstorm" follow-up only whitened the frame edges by the end
   of its 5 s. The model keeps the world consistent with its memory.

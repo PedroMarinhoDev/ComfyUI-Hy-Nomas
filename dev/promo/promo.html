@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hy-Nomas promo</title>
+<style>
+@font-face { font-family: Anton; src: url(fonts/anton.woff2) format("woff2"); }
+@font-face { font-family: Oswald; src: url(fonts/oswald.woff2) format("woff2"); font-weight: 200 700; }
+@font-face { font-family: "IBM Plex Sans"; src: url(fonts/IBMPlexSans-Regular.ttf); font-weight: 400; }
+@font-face { font-family: "IBM Plex Sans"; src: url(fonts/IBMPlexSans-Medium.ttf); font-weight: 500; }
+@font-face { font-family: "IBM Plex Sans"; src: url(fonts/IBMPlexSans-SemiBold.ttf); font-weight: 600; }
+@font-face { font-family: "IBM Plex Sans"; src: url(fonts/IBMPlexSans-Bold.ttf); font-weight: 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fonts/IBMPlexMono-Regular.ttf); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fonts/IBMPlexMono-Medium.ttf); font-weight: 500; }
+:root { --bg: #0D1117; --card: #151B23; --ink: #F0F6FC; --muted: #9198A1; --line: #30363D; --accent: #F2A93B;
+        --blue: #58A6FF; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); color: var(--ink);
+             font-family: "IBM Plex Sans", sans-serif; }
+.layer { position: absolute; inset: 0; opacity: 0; will-change: opacity; }
+.handle { position: absolute; right: 64px; top: 40px; font: 600 40px Oswald; color: rgba(240, 246, 252, .62); z-index: 60;
+          letter-spacing: .01em; }
+/* step headings */
+.step { position: absolute; left: 96px; top: 46px; will-change: transform, opacity; }
+.step .row { display: flex; align-items: baseline; gap: 22px; }
+.step .num { font: 600 46px Oswald; color: var(--accent); letter-spacing: .08em; }
+.step h2 { margin: 0; font: 400 84px/1 Anton; letter-spacing: .005em; text-transform: uppercase; }
+.step p { margin: 12px 0 0; font: 400 30px "IBM Plex Sans"; color: var(--muted); white-space: nowrap; }
+.step p b { color: var(--ink); font-weight: 600; }
+/* video screens */
+.screen { position: absolute; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #000;
+          box-shadow: 0 30px 80px rgba(0,0,0,.55); will-change: transform, opacity; }
+.screen img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.badge { position: absolute; padding: 5px 14px; border-radius: 9px; background: rgba(13,17,23,.78); font: 600 26px Oswald;
+         letter-spacing: .08em; color: var(--ink); }
+.badge.tr { right: 16px; top: 14px; }
+.badge.tl { left: 16px; top: 14px; }
+.badge b { color: var(--accent); font-weight: 600; }
+/* title and outro */
+.mosaic { position: absolute; inset: -40px 0; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+.mosaic .mrow { display: flex; gap: 14px; will-change: transform; }
+.mosaic img { width: 420px; height: 231px; object-fit: cover; border-radius: 10px; flex: none; }
+.shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,17,23,.74) 0%, rgba(13,17,23,.92) 60%, rgba(13,17,23,.98) 100%); }
+.titlebox { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.kicker { font: 600 38px Oswald; letter-spacing: .30em; color: var(--accent); margin-right: -.30em; }
+.bigtitle { font: 400 250px/0.95 Anton; letter-spacing: .01em; margin: 8px 0 6px; }
+.tagline { font: 600 50px Oswald; letter-spacing: .12em; color: var(--ink); margin-right: -.12em; }
+.tagline span { color: var(--accent); }
+.wip { margin-top: 30px; padding: 8px 22px; border-radius: 30px; border: 2px solid var(--accent); color: var(--accent);
+       font: 600 28px Oswald; letter-spacing: .18em; margin-right: -.18em; }
+.url { margin-top: 18px; font: 500 40px "IBM Plex Mono"; color: var(--ink); padding: 12px 26px; border-radius: 14px;
+       border: 1px solid var(--line); background: rgba(21,27,35,.92); }
+.url small { color: var(--muted); font: 500 26px Oswald; letter-spacing: .14em; margin-right: 18px; }
+.sub2 { margin-top: 26px; font: 400 32px "IBM Plex Sans"; color: var(--muted); }
+.sub2 b { color: var(--accent); font-weight: 600; }
+.fine { margin-top: 14px; font: 400 22px "IBM Plex Sans"; color: #6e7681; }
+/* 01: the start image */
+.photo { position: absolute; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #000;
+         box-shadow: 0 24px 60px rgba(0,0,0,.55); will-change: transform, opacity; }
+.photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.photolabel { position: absolute; font: 600 30px Oswald; letter-spacing: .16em; color: var(--muted); }
+.arrow { position: absolute; height: 6px; border-radius: 3px; background: var(--accent); transform-origin: 0 50%; }
+.arrow::after { content: ""; position: absolute; right: -6px; top: -11px; border-left: 22px solid var(--accent);
+                border-top: 14px solid transparent; border-bottom: 14px solid transparent; }
+.nodechip { position: absolute; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line); background: var(--card);
+            font: 500 27px "IBM Plex Sans"; white-space: nowrap; }
+.nodechip b { color: var(--accent); font-weight: 600; }
+/* 02: segment timeline */
+.tl { position: absolute; display: flex; gap: 10px; }
+.tl .seg { position: relative; height: 92px; border-radius: 10px; border: 1px solid var(--line); background: var(--card);
+           padding: 10px 14px; overflow: hidden; }
+.tl .seg .k { font: 600 20px Oswald; letter-spacing: .14em; color: var(--muted); }
+.tl .seg .x { font: 500 23px/1.25 "IBM Plex Sans"; color: var(--muted); margin-top: 4px; }
+.tl .seg.on { border-color: var(--accent); }
+.tl .seg.on .k { color: var(--accent); }
+.tl .seg.on .x { color: var(--ink); }
+.tl .seg .fill { position: absolute; left: 0; bottom: 0; height: 4px; background: var(--accent); }
+/* 03/04: keys and map */
+.keys { position: absolute; display: grid; grid-template-columns: repeat(3, 66px); grid-auto-rows: 66px; gap: 8px; }
+.key { border-radius: 10px; border: 2px solid var(--line); background: var(--card); display: flex; align-items: center;
+       justify-content: center; font: 700 30px "IBM Plex Sans"; color: var(--muted); transition: none; }
+.key.on { background: var(--accent); border-color: var(--accent); color: #0D1117; box-shadow: 0 0 26px rgba(242,169,59,.55); }
+.keytitle { position: absolute; font: 600 24px Oswald; letter-spacing: .2em; color: var(--muted); }
+#map { position: absolute; }
+.mono { font-family: "IBM Plex Mono"; }
+.statusline { position: absolute; font: 500 28px "IBM Plex Sans"; color: var(--muted); white-space: nowrap; }
+.statusline b { color: var(--ink); font-weight: 600; }
+.statusline i { color: var(--accent); font-style: normal; font-weight: 600; }
+/* 05: prompt card */
+.code { position: absolute; background: rgba(21,27,35,.96); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px;
+        font: 400 21px/1.55 "IBM Plex Mono"; color: var(--muted); white-space: pre; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
+.code b { color: var(--ink); font-weight: 500; }
+.code i { color: var(--accent); font-style: normal; }
+.code u { color: var(--blue); text-decoration: none; }
+/* speed */
+.stats { position: absolute; left: 96px; right: 96px; top: 262px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px 28px 30px; height: 300px;
+        will-change: transform, opacity; }
+.stat .v { font: 400 92px/1 Anton; color: var(--ink); letter-spacing: .01em; font-variant-numeric: tabular-nums; }
+.stat .v small { font: 600 38px Oswald; color: var(--accent); margin-left: 8px; letter-spacing: .04em; }
+.stat .d { margin-top: 18px; font: 400 27px/1.35 "IBM Plex Sans"; color: var(--muted); }
+.stat .d b { color: var(--ink); font-weight: 600; }
+.bars { position: absolute; left: 96px; right: 96px; top: 620px; }
+.bars .label { font: 600 26px Oswald; letter-spacing: .2em; color: var(--muted); margin-bottom: 18px; }
+.bar { position: relative; height: 64px; margin-bottom: 16px; }
+.bar .fillb { position: absolute; left: 260px; top: 0; height: 64px; border-radius: 10px; }
+.bar .name { position: absolute; left: 0; top: 0; line-height: 64px; font: 500 28px "IBM Plex Sans"; color: var(--muted); width: 240px; }
+.bar .val { position: absolute; top: 0; line-height: 64px; font: 600 34px Oswald; letter-spacing: .04em; white-space: nowrap; }
+.tech { position: absolute; left: 96px; right: 96px; top: 900px; display: flex; flex-wrap: wrap; gap: 12px; }
+.chip { padding: 9px 18px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); font: 500 26px "IBM Plex Sans";
+        color: var(--ink); will-change: opacity, transform; }
+.chip.on { border-color: var(--accent); color: var(--accent); }
+/* comfy */
+.shot { position: absolute; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,.55);
+        will-change: transform; background: #202020; }
+.shot img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; }
+.featlist { position: absolute; display: flex; flex-direction: column; gap: 16px; }
+.feat { display: flex; align-items: center; gap: 16px; font: 500 31px "IBM Plex Sans"; color: var(--ink); will-change: opacity, transform; }
+.feat .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); flex: none; }
+.feat small { color: var(--muted); font-weight: 400; font-size: 25px; margin-left: 6px; }
+</style>
+</head>
+<body>
+<div class="handle">@LatentSpacer</div>
+
+<div class="layer" id="L-title">
+  <div class="mosaic" id="mosaic1"></div><div class="shade"></div>
+  <div class="titlebox">
+    <div class="kicker" id="t-kicker">TENCENT'S VIDEO WORLD MODEL · NOW NATIVE IN COMFYUI</div>
+    <div class="bigtitle" id="t-big">HY-NOMAS</div>
+    <div class="tagline" id="t-tag">WORLDS YOU CAN <span>START, CHAIN AND STEER</span></div>
+    <div class="wip" id="t-wip">WORK IN PROGRESS</div>
+  </div>
+</div>
+
+<div class="layer" id="L-image">
+  <div class="step" id="s1"><div class="row"><span class="num">01</span><h2>Start from an image</h2></div>
+    <p>Your picture becomes the world's <b>first memory</b>, and the world continues from it.</p></div>
+  <div class="photo" id="i-photo" style="left:96px; top:360px; width:560px; height:308px"><img id="i-photo-img"></div>
+  <div class="photolabel" id="i-label" style="left:96px; top:684px">YOUR IMAGE</div>
+  <div class="arrow" id="i-arrow" style="left:676px; top:511px; width:72px"></div>
+  <div class="screen" id="i-screen" style="left:776px; top:250px; width:1048px; height:576px"><img id="i-video">
+    <div class="badge tl" id="i-badge"><b>GENERATED</b> · 1280×704</div></div>
+  <div class="nodechip" id="i-chip1" style="left:96px; top:760px">Load Image → <b>Start From Image</b></div>
+  <div class="nodechip" id="i-chip2" style="left:96px; top:830px">→ <b>Generate World</b> → Decode</div>
+  <div class="statusline" id="i-status" style="left:776px; top:852px"></div>
+</div>
+
+<div class="layer" id="L-chain">
+  <div class="step" id="s2"><div class="row"><span class="num">02</span><h2>Chain segments</h2></div>
+    <p>Each segment has <b>its own text</b>. The model remembers everything before it.</p></div>
+  <div class="screen" id="c-screen" style="left:400px; top:226px; width:1120px; height:616px"><img id="c-video">
+    <div class="badge tr"><b>2×</b> SPEED</div><div class="badge tl" id="c-time"></div></div>
+  <div class="tl" id="c-tl" style="left:96px; top:870px; width:1728px"></div>
+</div>
+
+<div class="layer" id="L-camera">
+  <div class="step" id="s3"><div class="row"><span class="num">03</span><h2>Steer the camera</h2></div>
+    <p>Key timelines, a path you fly in the node, or a camera move written in the prompt.</p></div>
+  <div class="screen" id="k-screen" style="left:96px; top:226px; width:1312px; height:722px"><img id="k-video">
+    <div class="badge tr"><b>2×</b> SPEED</div><div class="badge tl" id="k-time"></div></div>
+  <div class="keytitle" style="left:1478px; top:236px">CAMERA KEYS</div>
+  <div class="keys" id="k-keys" style="left:1478px; top:280px"></div>
+  <div class="keytitle" style="left:1478px; top:600px">TOP VIEW</div>
+  <canvas id="map" width="760" height="680" style="left:1478px; top:640px; width:380px; height:340px"></canvas>
+  <div class="statusline mono" id="k-status" style="left:96px; top:972px"></div>
+</div>
+
+<div class="layer" id="L-drive">
+  <div class="step" id="s4"><div class="row"><span class="num">04</span><h2>Drive it</h2></div>
+    <p>Hold <b>W/A/S/D</b> and the <b>arrows</b> in the node; it generates the world turn by turn.</p></div>
+  <div class="screen" id="d-screen" style="left:96px; top:226px; width:1250px; height:721px"><img id="d-video">
+    <div class="badge tl" id="d-turn"></div><div class="badge tr"><b>REAL</b> SPEED OF THE VIDEO</div></div>
+  <div class="keytitle" style="left:1440px; top:236px">KEYS HELD THIS TURN</div>
+  <div class="keys" id="d-keys" style="left:1440px; top:280px"></div>
+  <div class="statusline" id="d-status" style="left:1440px; top:610px; white-space:normal; width:400px; line-height:1.4"></div>
+</div>
+
+<div class="layer" id="L-text">
+  <div class="step" id="s5"><div class="row"><span class="num">05</span><h2>Or start from text</h2></div>
+    <p>Tencent's structured world prompt: style, subject, scene and <b>timed actions</b>.</p></div>
+  <div class="screen" id="x-screen" style="left:96px; top:226px; width:1312px; height:722px"><img id="x-video">
+    <div class="badge tr"><b>2×</b> SPEED</div></div>
+  <div class="code" id="x-code" style="left:1200px; top:470px"></div>
+</div>
+
+<div class="layer" id="L-speed">
+  <div class="step" id="s6"><div class="row"><span class="num">⚡</span><h2>Fast on consumer GPUs</h2></div>
+    <p>Tencent's INT8 weights on the <b>int8 tensor cores</b>, fused kernels, an FP8 decoder, int8 memory.</p></div>
+  <div class="stats" id="stats"></div>
+  <div class="bars" id="bars">
+    <div class="label">ONE 720P SAMPLING STEP · RTX 4090</div>
+    <div class="bar"><div class="name">bf16 port</div><div class="fillb" id="b1" style="background:#3a4250"></div><div class="val" id="b1v"></div></div>
+    <div class="bar"><div class="name">this pack</div><div class="fillb" id="b2" style="background:var(--accent)"></div><div class="val" id="b2v"></div></div>
+  </div>
+</div>
+
+<div class="layer" id="L-comfy">
+  <div class="step" id="s7"><div class="row"><h2>Native ComfyUI nodes</h2></div>
+    <p>No wrapped pipeline: the stock <b>KSampler</b> and ComfyUI's own memory management.</p></div>
+  <div class="shot" id="w-shot" style="left:96px; top:226px; width:1100px; height:760px"><img id="w-img"></div>
+  <div class="featlist" id="w-feats" style="left:1260px; top:250px; width:600px"></div>
+</div>
+
+<div class="layer" id="L-outro">
+  <div class="mosaic" id="mosaic2"></div><div class="shade"></div>
+  <div class="titlebox">
+    <div class="kicker">FREE · OPEN SOURCE · FOR COMFYUI</div>
+    <div class="bigtitle" style="font-size:150px; margin:10px 0 18px">COMFYUI-HY-NOMAS</div>
+    <div class="url"><small>NODES</small>github.com/PedroMarinhoDev/ComfyUI-Hy-Nomas</div>
+    <div class="url"><small>MODEL</small>huggingface.co/PedroMarinhoDev/Hy-Nomas-ComfyUI</div>
+    <div class="sub2"><b>Work in progress:</b> more checkpoints, LoRAs and speedups are coming.</div>
+    <div class="fine">Hy-Nomas by Tencent (Apache-2.0). The PixelUMM video decoder is NVIDIA One-Way Noncommercial: research and evaluation only.</div>
+  </div>
+</div>
+
+<script type="module" src="promo.js"></script>
+</body>
+</html>

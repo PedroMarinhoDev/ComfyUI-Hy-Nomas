@@ -1,9 +1,10 @@
 """Generate a world through the server with the per-segment graph (Segment -> KSampler -> Extend World) and save
 an mp4. Usage:
     python dev/run_world.py prompt.json --width 832 --height 480 [--segments N] [--seconds S] [--matmul int8]
-                                        [--image picture.png --still 3]
+                                        [--image picture.png --still 3] [--keys 1="D+Left 5" ...]
 `--seconds S` rewrites the script's times to S-second segments (quick tests). `--image` starts the world from a
-picture (Start From Image as segment 0; the file must be in the server's input folder)."""
+picture (Start From Image as segment 0; the file must be in the server's input folder). `--keys I=TIMELINE`
+steers segment I with a Camera Keys timeline (repeatable)."""
 import argparse
 import json
 import sys
@@ -35,7 +36,8 @@ def retime(world, seconds, count):
     return world
 
 
-def graph(world_json, n, width, height, seed, matmul, decoder_matmul, clip, prefix, steps=8, image=None, still=3):
+def graph(world_json, n, width, height, seed, matmul, decoder_matmul, clip, prefix, steps=8, image=None, still=3,
+          keys=None):
     g = {
         "dit": {"class_type": "HyNomasLoadDiT", "inputs": {"dit_name": "hy_nomas_distil_int8.safetensors", "matmul": matmul}},
         "clip": {"class_type": "CLIPLoader", "inputs": {"clip_name": clip, "type": "qwen_image"}},
@@ -56,6 +58,10 @@ def graph(world_json, n, width, height, seed, matmul, decoder_matmul, clip, pref
         seg = {"clip": ["clip", 0], "script": ["script", 0], "segment_index": i, "width": width, "height": height}
         if world:
             seg["world"] = [world, 0]
+        if keys and i in keys:
+            g[f"cam{i}"] = {"class_type": "HyNomasCameraKeys", "inputs": {"timeline": keys[i], "translation_scale": 1.0,
+                                                                    "rotation_scale": 2.5}}
+            seg["camera"] = [f"cam{i}", 0]
         g[f"seg{i}"] = {"class_type": "HyNomasSegment", "inputs": seg}
         g[f"ks{i}"] = {"class_type": "KSampler", "inputs": {
             "model": ["dit", 0], "seed": seed + i, "steps": steps, "cfg": 1.0, "sampler_name": "euler",
@@ -87,6 +93,7 @@ def main():
     ap.add_argument("--host", default="127.0.0.1:8199")
     ap.add_argument("--image", default=None)
     ap.add_argument("--still", type=int, default=3)
+    ap.add_argument("--keys", action="append", default=[], help='I=TIMELINE, e.g. 1="D+Left 5"')
     args = ap.parse_args()
     data = json.loads(Path(args.prompt).read_text())
     world = data[0] if isinstance(data, list) else data
@@ -96,7 +103,8 @@ def main():
         world["segments"] = world["segments"][:args.segments]
     n = len(world["segments"])
     g = graph(json.dumps(world, ensure_ascii=False), n, args.width, args.height, args.seed, args.matmul,
-              args.decoder_matmul, args.clip, args.prefix, image=args.image, still=args.still)
+              args.decoder_matmul, args.clip, args.prefix, image=args.image, still=args.still,
+              keys={int(k.split("=", 1)[0]): k.split("=", 1)[1] for k in args.keys})
     history, timings, wall = Client(args.host).run(g)
     print(f"wall {wall:.1f}s")
     for node, sec in sorted(timings.items(), key=lambda kv: -kv[1]):
