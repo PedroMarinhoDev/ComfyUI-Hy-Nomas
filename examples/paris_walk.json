@@ -1,0 +1,39 @@
+{
+  "perspective_view": "third-person follow",
+  "Style": "video game",
+  "subject_list": [
+    {
+      "subject_id": "<|Subject1|>",
+      "display_name": "woman in a dark leather jacket",
+      "subject_attribute": "An adult woman with long hair tied back in a high ponytail, wearing a dark leather jacket, a black backpack, dark slim trousers and black ankle boots, positioned in the center of a wet cobblestone street and seen from behind. The camera is placed behind the woman in a dark leather jacket, and follows the woman in a dark leather jacket throughout the whole video. The camera is tracking the woman in a dark leather jacket and the woman in a dark leather jacket should be placed in the center of the video."
+    }
+  ],
+  "segments": [
+    {
+      "start_time": "00:00.000",
+      "end_time": "00:05.000",
+      "visual_description_long": "A wide cobblestone street runs along the bank of the Seine in Paris toward the Eiffel Tower, which rises in the soft haze at the far end of the avenue, its iron lattice muted by the overcast sky. On the left, a low stone parapet and a row of autumn trees with orange and golden leaves line the river, and an arched stone bridge crosses the gray-green water. On the right, cream-colored Haussmann buildings with wrought-iron balconies, mansard roofs and ground-floor shopfronts form a continuous facade behind tall trees in rust-colored foliage. Vintage cars are parked along both curbs, and a few distant pedestrians walk far ahead. The cobblestones glisten with rain and reflect the pale sky, with fallen leaves scattered across them. The light is soft and diffuse, with a cool, slightly misty atmosphere. <Camera1>The camera tracks steadily forward down the street from a rear, slightly elevated angle, keeping a consistent medium distance while the buildings and trees slowly drift past</Camera1>.",
+      "description_change": null,
+      "contained_actions": [
+        {
+          "start_time": "00:00.000",
+          "end_time": "00:05.000",
+          "action_description": "<Action1><|Subject1|> walks steadily down the center of the wet cobblestone street toward the Eiffel Tower with a relaxed, even stride, arms swinging gently at the sides</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:05.000",
+      "end_time": "00:10.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the Eiffel Tower appears slightly larger at the end of the street as more riverside buildings and autumn trees pass on both sides, and a flock of gray pigeons lifts off from the cobblestones ahead and flutters toward the river. The overcast sky, soft light and wet street surface remain unchanged. <Camera1>The camera continues tracking forward from the same rear elevated angle, keeping a consistent medium distance</Camera1>.",
+      "contained_actions": [
+        {
+          "start_time": "00:05.000",
+          "end_time": "00:10.000",
+          "action_description": "<Action1><|Subject1|> keeps walking toward the Eiffel Tower, then slows down and turns to look left toward the river and the stone bridge</Action1>."
+        }
+      ]
+    }
+  ]
+}

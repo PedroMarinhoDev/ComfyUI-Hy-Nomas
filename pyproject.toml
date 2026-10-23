@@ -1,0 +1,13 @@
+[project]
+name = "comfyui-hy-nomas"
+description = "Tencent's Hy-Nomas video world model natively in ComfyUI: a world generated segment by segment from text, timed actions and camera control, started from text or from an image, and an interactive drive mode. INT8 DiT and FP8 decoder kernels, runs on 12 GB cards. Work in progress."
+version = "0.1.0"
+license = { text = "GPL-3.0" }
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/PedroMarinhoDev/ComfyUI-Hy-Nomas"
+"Model files" = "https://huggingface.co/PedroMarinhoDev/Hy-Nomas-ComfyUI"
+
+[tool.comfy]
+DisplayName = "Hy-Nomas (world model)"

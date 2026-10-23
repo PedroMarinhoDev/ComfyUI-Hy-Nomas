@@ -1,0 +1,72 @@
+{
+  "perspective_view": "first-person",
+  "Style": "real-world footage",
+  "subject_list": [
+    {
+      "subject_id": "<|Subject1|>",
+      "display_name": "first-person operator",
+      "subject_attribute": "An adult visitor holding the camera at eye height. The first-person operator is embodied by the camera, and has the same first-person viewpoint as the camera throughout the whole video. Most of the first-person operator is not visible, and optionally only a small part of the first-person operator can be seen in the video."
+    }
+  ],
+  "segments": [
+    {
+      "start_time": "00:00.000",
+      "end_time": "00:01.000",
+      "visual_description_long": "A secluded tropical cove at midday. In the foreground, a ring of rounded stones holds the glowing red embers of a campfire on pale sand, surrounded by weathered driftwood logs, a tree stump and wooden Adirondack chairs with orange cushions. Fallen orange and red leaves are scattered over the sand. Beyond the fire pit, calm turquoise water sparkles in the sun and opens to the sea under a bright sky with small white clouds, framed by leaning coconut palms with orange-tinted fronds on both sides. A wooden hut and a deck with lounge chairs sit at the right edge among the trees. The scene has strong teal and orange color grading and deep shadows.",
+      "description_change": null,
+      "contained_actions": []
+    },
+    {
+      "start_time": "00:01.000",
+      "end_time": "00:06.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the visible scene, background, and other-object layout remain unchanged, while thin smoke rises from the embers and the turquoise water ripples gently.",
+      "contained_actions": [
+        {
+          "start_time": "00:01.000",
+          "end_time": "00:06.000",
+          "action_description": "<Action1><|Subject1|> slowly advances past the left side of the fire pit toward the water's edge, the first-person viewpoint moving forward at walking pace</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:06.000",
+      "end_time": "00:11.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the fire pit falls behind and the shallow turquoise water now fills the lower half of the frame, with small waves lapping over the pale sand and smooth rocks at the shore. <Camera1>The viewpoint turns slowly to the right along the curving shoreline, revealing the wooden deck with lounge chairs and the hut among the palms</Camera1>.",
+      "contained_actions": [
+        {
+          "start_time": "00:06.000",
+          "end_time": "00:11.000",
+          "action_description": "<Action1><|Subject1|> reaches the water's edge and turns right to walk along the shoreline</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:11.000",
+      "end_time": "00:16.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the wooden deck and the hut come closer on the right, their weathered planks and striped hammock in the shade of the palms, while the sea stays calm and sparkling on the left.",
+      "contained_actions": [
+        {
+          "start_time": "00:11.000",
+          "end_time": "00:16.000",
+          "action_description": "<Action1><|Subject1|> keeps walking along the wet sand at the waterline toward the wooden deck</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:16.000",
+      "end_time": "00:21.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the sunlight turns warmer and more golden and the shadows of the palms stretch longer across the sand. <Camera1>The viewpoint turns left toward the open sea, where the horizon glows under small white clouds</Camera1>.",
+      "contained_actions": [
+        {
+          "start_time": "00:16.000",
+          "end_time": "00:21.000",
+          "action_description": "<Action1><|Subject1|> stops at the end of the deck and looks out over the open sea</Action1>."
+        }
+      ]
+    }
+  ]
+}

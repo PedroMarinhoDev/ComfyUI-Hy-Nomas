@@ -1,0 +1,20 @@
+ComfyUI-Hy-Nomas
+
+This package ports Tencent's Hy-Nomas inference code (https://github.com/Tencent-Hunyuan/Hy-Nomas, commit 18974d4,
+Apache License 2.0; see docs/upstream/LICENSE-HY-NOMAS) to ComfyUI.
+
+Copied or closely ported from it (Apache-2.0, modified for ComfyUI):
+- hy_nomas/prompt.py: prompt shaping from hymm/inference.py and the action-offset logic of hymm/pipeline/base.py
+- hy_nomas/model.py: the DiT of hymm/models/dit/nomas_cpt.py and its modules (rewritten for ComfyUI ops)
+- hy_nomas/world.py: history frame selection from hymm/models/dit/modules/uniform_history_cache.py and the INT8
+  KV format of int8_kv_cache.py
+- hy_nomas/camera.py: pose normalization and resampling from hymm/models/camera/geometry/demo_precomputed.py,
+  rotation_scale.py and discretize_poses.py; the key controls follow apps/frontend CameraPathDrawer.tsx
+- hy_nomas/pixelumm.py: the PixelUMM decoder of hymm/models/vae/pixelumm_decoder/ (itself a port of
+  nv-tlabs/PixelUMM, Apache-2.0 code)
+- hy_nomas/dcae.py: the DCAE-V encoder of hymm/models/vae/autoencoder_dcae_v.py
+- docs/upstream/*.yaml and example_prompts.json: Tencent's configuration and example prompt
+
+Model weights are not included. Hy-Nomas weights are released by Tencent under the Apache License 2.0. The PixelUMM
+decoder weights (and fine-tunes of them) are under the NVIDIA One-Way Noncommercial License: non-commercial research
+and evaluation use only.

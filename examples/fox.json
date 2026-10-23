@@ -1,0 +1,70 @@
+{
+  "perspective_view": "third-person observer",
+  "Style": "CG",
+  "subject_list": [
+    {
+      "subject_id": "<|Subject1|>",
+      "display_name": "small orange fox",
+      "subject_attribute": "A small fox with orange fur, a white chest and a fluffy white-tipped tail, standing on a stone path in side view. The camera films the small orange fox from an external position, and the small orange fox is visible in the video. The framing of the video from the camera is independent of the small orange fox, and does not follow the movement of the small orange fox."
+    }
+  ],
+  "segments": [
+    {
+      "start_time": "00:00.000",
+      "end_time": "00:05.000",
+      "visual_description_long": "A flagstone path crosses a luminous forest of tall dark trunks under a misty canopy. Lush green grass and low bushes line both sides of the path, with mossy gray rocks scattered along its edge. Small blue fireflies drift and glow between the trees in the soft, hazy light, and the background fades into pale fog.",
+      "description_change": null,
+      "contained_actions": [
+        {
+          "start_time": "00:00.000",
+          "end_time": "00:05.000",
+          "action_description": "<Action1><|Subject1|> walks slowly to the left along the stone path</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:05.000",
+      "end_time": "00:10.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, clusters of glowing blue flowers open in the grass beside the path, while the trees, fog and fireflies remain unchanged.",
+      "contained_actions": [
+        {
+          "start_time": "00:05.000",
+          "end_time": "00:07.500",
+          "action_description": "<Action1><|Subject1|> stops beside the flowers and turns around to face the camera</Action1>."
+        },
+        {
+          "start_time": "00:07.500",
+          "end_time": "00:10.000",
+          "action_description": "<Action2><|Subject1|> sniffs the glowing flowers and looks around</Action2>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:10.000",
+      "end_time": "00:15.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the fog thins and shafts of soft sunlight break through the canopy, lighting the glowing flowers, the stone path and the drifting fireflies.",
+      "contained_actions": [
+        {
+          "start_time": "00:10.000",
+          "end_time": "00:15.000",
+          "action_description": "<Action1><|Subject1|> sits down beside the flowers and watches the fireflies drift past</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:15.000",
+      "end_time": "00:20.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the visible scene, background, and other-object layout remain unchanged.",
+      "contained_actions": [
+        {
+          "start_time": "00:15.000",
+          "end_time": "00:20.000",
+          "action_description": "<Action1><|Subject1|> stands up, turns away and trots off along the stone path into the forest, the fluffy tail swaying</Action1>."
+        }
+      ]
+    }
+  ]
+}

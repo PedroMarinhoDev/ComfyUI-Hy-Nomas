@@ -1,0 +1,77 @@
+{
+  "perspective_view": "third-person follow",
+  "Style": "video game",
+  "subject_list": [
+    {
+      "subject_id": "<|Subject1|>",
+      "display_name": "woman in a dark leather jacket",
+      "subject_attribute": "An adult woman with brown hair tied back in a ponytail, wearing a worn dark leather jacket, a black canvas backpack, a belt with a pouch and a thigh holster, dark cargo trousers and black lace-up boots, positioned left of center on a cobblestone street and seen from behind. The camera is placed behind the woman in a dark leather jacket, and follows the woman in a dark leather jacket throughout the whole video. The camera is tracking the woman in a dark leather jacket and the woman in a dark leather jacket should be placed in the center of the video."
+    }
+  ],
+  "segments": [
+    {
+      "start_time": "00:00.000",
+      "end_time": "00:01.000",
+      "visual_description_long": "A wet cobblestone street in Paris slopes gently down toward a riverside road along the Seine, with the Eiffel Tower rising in the soft haze straight ahead under a cloudy sky lit from behind by a pale sun. On the left, a crumbling stone wall gives way to the river, an arched stone bridge and a row of cream-colored buildings with gray mansard roofs and domed towers behind autumn trees with orange leaves. On the right, tall Haussmann buildings with wrought-iron balconies line the street, and small vintage cars and a few modern cars are parked along the curb. Black iron street lamps stand along the river wall, and a few distant pedestrians walk toward the bridge. The light is soft and diffuse, with a cool, slightly misty atmosphere and glistening reflections on the cobblestones.",
+      "description_change": null,
+      "contained_actions": []
+    },
+    {
+      "start_time": "00:01.000",
+      "end_time": "00:06.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the visible scene, background, and other-object layout remain unchanged. <Camera1>The camera follows steadily from behind at a consistent medium distance as the cobblestone street slopes down toward the river road</Camera1>.",
+      "contained_actions": [
+        {
+          "start_time": "00:01.000",
+          "end_time": "00:06.000",
+          "action_description": "<Action1><|Subject1|> walks down the cobblestone slope toward the riverside road with a steady, confident stride, arms swinging at the sides</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:06.000",
+      "end_time": "00:11.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the riverside road now runs straight ahead along the stone wall of the Seine, with the street lamps and parked cars passing on both sides and the Eiffel Tower growing larger at the end of the road. A few pedestrians in coats walk toward the camera on the far sidewalk.",
+      "contained_actions": [
+        {
+          "start_time": "00:06.000",
+          "end_time": "00:11.000",
+          "action_description": "<Action1><|Subject1|> keeps walking along the riverside sidewalk toward the Eiffel Tower, passing a black iron street lamp</Action1>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:11.000",
+      "end_time": "00:16.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the river wall opens onto a view of the Seine and the arched stone bridge on the left, with gray water flowing slowly under the arches. <Camera1>The camera swings slightly to the left to frame the river and the bridge beside the subject</Camera1>.",
+      "contained_actions": [
+        {
+          "start_time": "00:11.000",
+          "end_time": "00:13.500",
+          "action_description": "<Action1><|Subject1|> slows down and stops at the stone river wall</Action1>."
+        },
+        {
+          "start_time": "00:13.500",
+          "end_time": "00:16.000",
+          "action_description": "<Action2><|Subject1|> rests one hand on the wall and turns the head to look across the river at the bridge</Action2>."
+        }
+      ]
+    },
+    {
+      "start_time": "00:16.000",
+      "end_time": "00:21.000",
+      "visual_description_long": null,
+      "description_change": "Compared to the previous segment, the sun breaks through the clouds behind the Eiffel Tower, and warm golden light spreads over the river, the bridge and the wet cobblestones, while the shadows grow longer.",
+      "contained_actions": [
+        {
+          "start_time": "00:16.000",
+          "end_time": "00:21.000",
+          "action_description": "<Action1><|Subject1|> turns back toward the Eiffel Tower and walks on along the river in the golden light</Action1>."
+        }
+      ]
+    }
+  ]
+}

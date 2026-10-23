@@ -1,0 +1,32 @@
+[
+  {
+    "test_id": "forest_world",
+    "Style": "Cinematic fantasy",
+    "perspective_view": "Third-person view",
+    "subject_list": [
+      {
+        "subject_id": "fox",
+        "display_name": "a small orange fox",
+        "subject_attribute": "Orange fur, white chest, and a fluffy tail."
+      }
+    ],
+    "segments": [
+      {
+        "start_time": "00:00.000",
+        "end_time": "00:05.000",
+        "visual_description_long": "A small orange fox stands on a stone path in a luminous forest. Blue fireflies drift between the trees.",
+        "contained_actions": [
+          {"start_time": "00:00.000", "end_time": "00:05.000", "action_description": "The fox walks slowly along the path."}
+        ]
+      },
+      {
+        "start_time": "00:05.000",
+        "end_time": "00:10.000",
+        "description_change": "Glowing blue flowers open beside the path as the fox continues forward.",
+        "contained_actions": [
+          {"start_time": "00:05.000", "end_time": "00:10.000", "action_description": "The fox passes the flowers and looks around."}
+        ]
+      }
+    ]
+  }
+]
