@@ -20,7 +20,10 @@ const raf = () => new Promise((r) => requestAnimationFrame(() => r()));
 const XF = 0.4;
 const vis = (t, a, b, first = false, last = false) =>
   Math.min(first ? 1 : seg(t, a - XF / 2, a + XF / 2), last ? 1 : 1 - seg(t, b - XF / 2, b + XF / 2));
-const fadeUp = (el, k, dy = 24) => { el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * dy}px)`; };
+// moves land on whole device pixels (the page renders at 2x), so text is never drawn between pixels differently
+// from frame to frame
+const px = (v) => Math.round(v * 2) / 2;
+const fadeUp = (el, k, dy = 24) => { el.style.opacity = k; el.style.transform = `translateY(${px((1 - k) * dy)}px)`; };
 
 const data = await (await fetch("data.json")).json();
 const CLIPS = data.clips;
@@ -73,7 +76,7 @@ function sceneImage(t) {
   fadeUp($("s1"), easeOut(seg(t, a + 0.05, a + 0.7)));
   const p = easeOut(seg(t, a + 0.3, a + 1.0));
   $("i-photo").style.opacity = p;
-  $("i-photo").style.transform = `translateX(${(1 - p) * -80}px)`;
+  $("i-photo").style.transform = `translateX(${px((1 - p) * -80)}px)`;
   $("i-label").style.opacity = p;
   $("i-arrow").style.transform = `scaleX(${easeOut(seg(t, a + 1.0, a + 1.5))})`;
   $("i-arrow").style.opacity = seg(t, a + 1.0, a + 1.1);
@@ -251,7 +254,7 @@ const STATS = [
 const statEls = STATS.map((st) => {
   const d = document.createElement("div");
   d.className = "stat";
-  d.innerHTML = `<div class="v"></div><div class="d">${st.d}</div>`;
+  d.innerHTML = `<div class="v"><span class="n"></span><small>${st.u}</small></div><div class="d">${st.d}</div>`;
   $("stats").append(d);
   return d;
 });
@@ -267,9 +270,9 @@ function sceneSpeed(t) {
   STATS.forEach((st, i) => {
     const k = easeOut(seg(t, a + 0.3 + i * 0.3, a + 0.8 + i * 0.3));
     statEls[i].style.opacity = k;
-    statEls[i].style.transform = `translateY(${(1 - k) * 30}px)`;
+    statEls[i].style.transform = `translateY(${px((1 - k) * 30)}px)`;
     const c = ease(seg(t, a + 0.4 + i * 0.3, a + 1.6 + i * 0.3));
-    statEls[i].querySelector(".v").innerHTML = `${st.pre || ""}${(st.v * c).toFixed(st.dec)}<small>${st.u}</small>`;
+    statEls[i].querySelector(".n").textContent = `${st.pre || ""}${(st.v * c).toFixed(st.dec)}`;
   });
   const MAXW = 1240;
   const b = ease(seg(t, a + 2.2, a + 3.6));
@@ -348,5 +351,11 @@ window.renderFrame = async (t) => {
 };
 window.PROMO = { duration: DURATION, sfx: sfx.sort((a, b) => a.t - b.t), sections: S };
 await document.fonts.ready;
+// the counting numbers get the width of their final value, right-aligned, so the unit beside them stays put
+STATS.forEach((st, i) => {
+  const n = statEls[i].querySelector(".n");
+  n.textContent = `${st.pre || ""}${st.v.toFixed(st.dec)}`;
+  n.style.width = `${Math.ceil(n.getBoundingClientRect().width) + 2}px`;
+});
 await renderFrame(0);
 window.promoReady = true;

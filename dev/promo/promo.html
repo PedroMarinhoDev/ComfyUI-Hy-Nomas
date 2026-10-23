@@ -17,11 +17,11 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); color: var(--ink);
              font-family: "IBM Plex Sans", sans-serif; }
-.layer { position: absolute; inset: 0; opacity: 0; will-change: opacity; }
+.layer { position: absolute; inset: 0; opacity: 0; }
 .handle { position: absolute; right: 64px; top: 40px; font: 600 40px Oswald; color: rgba(240, 246, 252, .62); z-index: 60;
           letter-spacing: .01em; }
 /* step headings */
-.step { position: absolute; left: 96px; top: 46px; will-change: transform, opacity; }
+.step { position: absolute; left: 96px; top: 46px; }
 .step .row { display: flex; align-items: baseline; gap: 22px; }
 .step .num { font: 600 46px Oswald; color: var(--accent); letter-spacing: .08em; }
 .step h2 { margin: 0; font: 400 84px/1 Anton; letter-spacing: .005em; text-transform: uppercase; }
@@ -29,7 +29,7 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .step p b { color: var(--ink); font-weight: 600; }
 /* video screens */
 .screen { position: absolute; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #000;
-          box-shadow: 0 30px 80px rgba(0,0,0,.55); will-change: transform, opacity; }
+          box-shadow: 0 30px 80px rgba(0,0,0,.55); }
 .screen img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .badge { position: absolute; padding: 5px 14px; border-radius: 9px; background: rgba(13,17,23,.78); font: 600 26px Oswald;
          letter-spacing: .08em; color: var(--ink); }
@@ -38,7 +38,7 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .badge b { color: var(--accent); font-weight: 600; }
 /* title and outro */
 .mosaic { position: absolute; inset: -40px 0; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
-.mosaic .mrow { display: flex; gap: 14px; will-change: transform; }
+.mosaic .mrow { display: flex; gap: 14px; }
 .mosaic img { width: 420px; height: 231px; object-fit: cover; border-radius: 10px; flex: none; }
 .shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,17,23,.74) 0%, rgba(13,17,23,.92) 60%, rgba(13,17,23,.98) 100%); }
 .titlebox { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
@@ -56,7 +56,7 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .fine { margin-top: 14px; font: 400 22px "IBM Plex Sans"; color: #6e7681; }
 /* 01: the start image */
 .photo { position: absolute; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #000;
-         box-shadow: 0 24px 60px rgba(0,0,0,.55); will-change: transform, opacity; }
+         box-shadow: 0 24px 60px rgba(0,0,0,.55); }
 .photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .photolabel { position: absolute; font: 600 30px Oswald; letter-spacing: .16em; color: var(--muted); }
 .arrow { position: absolute; height: 6px; border-radius: 3px; background: var(--accent); transform-origin: 0 50%; }
@@ -94,10 +94,10 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .code u { color: var(--blue); text-decoration: none; }
 /* speed */
 .stats { position: absolute; left: 96px; right: 96px; top: 262px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.stat { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px 28px 30px; height: 300px;
-        will-change: transform, opacity; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px 28px 30px; height: 300px; }
 .stat .v { font: 400 92px/1 Anton; color: var(--ink); letter-spacing: .01em; font-variant-numeric: tabular-nums; }
 .stat .v small { font: 600 38px Oswald; color: var(--accent); margin-left: 8px; letter-spacing: .04em; }
+.stat .v .n { display: inline-block; text-align: right; white-space: nowrap; }
 .stat .d { margin-top: 18px; font: 400 27px/1.35 "IBM Plex Sans"; color: var(--muted); }
 .stat .d b { color: var(--ink); font-weight: 600; }
 .bars { position: absolute; left: 96px; right: 96px; top: 620px; }
@@ -108,14 +108,13 @@ html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; backgro
 .bar .val { position: absolute; top: 0; line-height: 64px; font: 600 34px Oswald; letter-spacing: .04em; white-space: nowrap; }
 .tech { position: absolute; left: 96px; right: 96px; top: 900px; display: flex; flex-wrap: wrap; gap: 12px; }
 .chip { padding: 9px 18px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); font: 500 26px "IBM Plex Sans";
-        color: var(--ink); will-change: opacity, transform; }
+        color: var(--ink); }
 .chip.on { border-color: var(--accent); color: var(--accent); }
 /* comfy */
-.shot { position: absolute; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,.55);
-        will-change: transform; background: #202020; }
+.shot { position: absolute; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,.55); background: #202020; }
 .shot img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 50%; }
 .featlist { position: absolute; display: flex; flex-direction: column; gap: 16px; }
-.feat { display: flex; align-items: center; gap: 16px; font: 500 31px "IBM Plex Sans"; color: var(--ink); will-change: opacity, transform; }
+.feat { display: flex; align-items: center; gap: 16px; font: 500 31px "IBM Plex Sans"; color: var(--ink); }
 .feat .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); flex: none; }
 .feat small { color: var(--muted); font-weight: 400; font-size: 25px; margin-left: 6px; }
 </style>

@@ -1,7 +1,7 @@
-"""The promo video for X and Reddit: 1920x1080, 60 fps, 68 s, with synthesized music and sound effects.
+"""The promo video for X and Reddit: 1920x1080, 60 fps, 68 s, with sound effects (synthesized music with --music).
 
     python dev/promo/promo_video.py --stills 2,8,18,28,36,43,50,57,63    # check frames (out/still_*.png)
-    python dev/promo/promo_video.py                                     # out/hy-nomas-promo.mp4
+    python dev/promo/promo_video.py                                     # out/hy-nomas-promo.mp4 (+ -silent.mp4)
 
 The picture is promo.html + promo.js rendered frame by frame by headless Chrome; every frame is a pure function of
 its time, so the frames are split between several Chrome processes (--workers) and written as JPEGs, then encoded
@@ -47,6 +47,7 @@ PLEX = Path("/usr/share/fonts/truetype/ibm-plex")
 FPS, W, H = 60, 1920, 1080
 SR = 48000
 PORT, CDP0 = 8195, 9340
+CHROME_FLAGS: list[str] = []
 
 
 # --------------------------------------------------------------------------------------------- #
@@ -145,9 +146,8 @@ async def with_page(fn, port: int):
     import aiohttp
 
     profile = tempfile.mkdtemp()
-    # no --disable-gpu: headless Chrome composites on the Intel iGPU of this machine (the NVIDIA cards stay free)
     chrome = subprocess.Popen(["google-chrome", "--headless=new", "--hide-scrollbars", f"--remote-debugging-port={port}",
-                               f"--user-data-dir={profile}", f"--window-size={W},{H}", "about:blank"],
+                               f"--user-data-dir={profile}", f"--window-size={W},{H}", *CHROME_FLAGS, "about:blank"],
                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
         async with aiohttp.ClientSession() as http_:
@@ -217,8 +217,9 @@ def encode(frames_dir: Path, audio: Path, out: Path, gpu: int) -> None:
     common = ["ffmpeg", "-v", "error", "-y", "-framerate", str(FPS), "-i", str(frames_dir / "%05d.jpg"), "-i", str(audio),
               "-map", "0:v", "-map", "1:a"]
     if has_nvenc:
-        video = ["-c:v", "h264_nvenc", "-preset", "p7", "-tune", "hq", "-rc", "vbr", "-cq", "18", "-b:v", "16M",
-                 "-maxrate", "28M", "-bufsize", "40M", "-profile:v", "high", "-bf", "3", "-spatial-aq", "1"]
+        video = ["-c:v", "h264_nvenc", "-preset", "p7", "-tune", "hq", "-rc", "vbr", "-cq", "21", "-b:v", "11M",
+                 "-maxrate", "15M", "-bufsize", "30M", "-profile:v", "high", "-bf", "3", "-spatial-aq", "1",
+                 "-temporal-aq", "1"]
         env = dict(os.environ, CUDA_DEVICE_ORDER="PCI_BUS_ID", CUDA_VISIBLE_DEVICES=str(gpu))
     else:
         video = ["-c:v", "libx264", "-preset", "slow", "-crf", "16", "-profile:v", "high"]
@@ -435,11 +436,21 @@ def sound_effects(events: list[dict], duration: float) -> np.ndarray:
     return out
 
 
-def write_audio(meta: dict, path: Path) -> None:
+def write_audio(meta: dict, path: Path, with_music: bool = False) -> None:
     import wave
 
     dur = meta["duration"]
-    mixdown = 0.7 * music(dur) + sound_effects(meta["sfx"], dur)
+    mixdown = sound_effects(meta["sfx"], dur)
+    if not with_music:
+        # the effects alone: peak at -9 dBFS, no loudness push (it would make the blips loud)
+        mixdown *= 0.355 / max(1e-6, np.abs(mixdown).max())
+        with wave.open(str(path), "wb") as w:
+            w.setnchannels(2)
+            w.setsampwidth(2)
+            w.setframerate(SR)
+            w.writeframes((mixdown.T * 32767).astype("<i2").tobytes())
+        return
+    mixdown = 0.7 * music(dur) + mixdown
     mixdown = np.tanh(mixdown * 1.1) / np.tanh(1.1)
     fade = int(1.2 * SR)
     mixdown[:, -fade:] *= np.linspace(1, 0, fade) ** 2
@@ -466,6 +477,7 @@ def main() -> None:
     p.add_argument("--stills", help="comma-separated times to render as PNG instead of the video")
     p.add_argument("--workers", type=int, default=8, help="Chrome processes rendering frames in parallel")
     p.add_argument("--gpu", type=int, default=1, help="NVENC device (nvidia-smi index)")
+    p.add_argument("--music", action="store_true", help="add the synthesized music under the sound effects")
     a = p.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     build()
@@ -476,9 +488,11 @@ def main() -> None:
             return
         meta = asyncio.run(render_frames(a.workers))
         (OUT / "meta.json").write_text(json.dumps(meta))
-        write_audio(meta, OUT / "audio.wav")
+        write_audio(meta, OUT / "audio.wav", a.music)
         encode(OUT / "frames", OUT / "audio.wav", OUT / "hy-nomas-promo.mp4", a.gpu)
-        print(f"wrote {OUT / 'hy-nomas-promo.mp4'}")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(OUT / "hy-nomas-promo.mp4"), "-c", "copy", "-an",
+                        "-movflags", "+faststart", str(OUT / "hy-nomas-promo-silent.mp4")], check=True)
+        print(f"wrote {OUT / 'hy-nomas-promo.mp4'} and -silent.mp4")
     finally:
         server.shutdown()
 
