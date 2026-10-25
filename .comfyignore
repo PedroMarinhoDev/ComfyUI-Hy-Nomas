@@ -1,0 +1,7 @@
+# Left out of the package published to the Comfy Registry: README images, docs, dev scripts and tests.
+assets/
+docs/
+dev/
+tests/
+pytest.ini
+.github/

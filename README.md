@@ -75,7 +75,7 @@ segment for the first two. RTX 4090, about 3 minutes each. Click a preview for t
 
 ## Quick start
 
-1. **Install the nodes** and restart ComfyUI.
+1. **Install the nodes** and restart ComfyUI. Search for **Hy-Nomas (world model)** in ComfyUI-Manager, or install it from the [Comfy Registry](https://registry.comfy.org/nodes/hy-nomas) with `comfy node install hy-nomas`. Or clone it:
 
    ```bash
    cd ComfyUI/custom_nodes
